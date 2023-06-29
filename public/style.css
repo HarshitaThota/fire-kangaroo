@@ -1,0 +1,18 @@
+.shrek{
+    size: 50px;
+}
+body{
+    background-color: cornsilk;
+}
+
+head{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: larger;
+    
+}
+h1{
+    color: lavender;
+}
+h1:hover{
+    color: cadetblue;
+}
