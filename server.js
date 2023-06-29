@@ -29,4 +29,24 @@ app.post('/requests', async (req, res) => {
     }
 });
 
+app.post('/test', async (req, res) => { 
+  const options = {
+      method: "GET",
+      headers: {
+          "Authorization": `Bearer ${API_KEY}`,
+          "Content-Type": "application/json",
+          'X-Api-Key':  `${API_KEY}`
+      }
+  };
+  try {
+    const response = await fetch(`https://api.api-ninjas.com/v1/recipe?query=pasta`, options);
+    const data = await response.json(); 
+    res.json({user: data});
+    
+} catch (error) {
+    console.error(error);
+}
+
+});
+
 app.listen(PORT, () => console.log('Your server is running on PORT ' + PORT));

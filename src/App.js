@@ -23,9 +23,9 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Routes>
-        <Route path="./" element={<Home />} />
-        <Route path="./AddRecipe" element={<AddRecipe />} />
-        <Route path="./AboutUs" element={<AboutUs />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/AddRecipe" element={<AddRecipe />} />
+        <Route path="/AboutUs" element={<AboutUs />} />
       </Routes>
     </BrowserRouter>
   );
