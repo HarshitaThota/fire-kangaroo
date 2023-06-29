@@ -11,8 +11,23 @@ head{
     
 }
 h1{
-    color: lavender;
+    color: palevioletred;
 }
 h1:hover{
     color: cadetblue;
+}
+
+img{
+    width: 1385px;
+}
+
+p{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: xx-large;
+    letter-spacing: 3px;
+    word-spacing: 6px;
+}
+
+p:hover{
+    color: goldenrod;
 }
