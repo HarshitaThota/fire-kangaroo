@@ -1,0 +1,30 @@
+body{
+    background-color: cornsilk;
+}
+
+head{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: larger;
+    
+}
+h1{
+    color: palevioletred;
+}
+h1:hover{
+    color: cadetblue;
+}
+
+img{
+    width: 1385px;
+}
+
+p{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: xx-large;
+    letter-spacing: 3px;
+    word-spacing: 6px;
+}
+
+p:hover{
+    color: goldenrod;
+}
