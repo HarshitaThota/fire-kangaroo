@@ -39,9 +39,9 @@ function NavBar() {
     return (
         <nav  id = "nbar" className="navbar">
             <ul>
-                <li><NavLink to="./" end activeClassName="active">Home</NavLink></li>
-                <li><NavLink to="./AddRecipe" activeClassName="active">Add Recipe</NavLink></li>
-                <li><NavLink to="./AboutUs" activeClassName="active">About Us</NavLink></li>
+                <li><NavLink to="./" end activeclassname="active">Home</NavLink></li>
+                <li><NavLink to="./AddRecipe" activeclassname="active">Add Recipe</NavLink></li>
+                <li><NavLink to="./AboutUs" activeclassname="active">About Us</NavLink></li>
             </ul>
         </nav>
     );

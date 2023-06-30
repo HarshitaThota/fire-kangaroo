@@ -29,17 +29,24 @@ app.post('/requests', async (req, res) => {
     }
 });
 
+
+//Front-end post request to here
+//something like localhost:8000/test
+//req holds food name data thing
+//Do call to recipe API `https://api.api-ninjas.com/v1/recipe?query=${data}` data is name of food/query
+//and then make another call to database to get user made recipes
 app.post('/test', async (req, res) => { 
+  let input = req.body.food;
   const options = {
       method: "GET",
       headers: {
           "Authorization": `Bearer ${API_KEY}`,
           "Content-Type": "application/json",
           'X-Api-Key':  `${API_KEY}`
-      }
+      },
   };
   try {
-    const response = await fetch(`https://api.api-ninjas.com/v1/recipe?query=pasta`, options);
+    const response = await fetch(`https://api.api-ninjas.com/v1/recipe?query=${input}`, options);
     const data = await response.json(); 
     res.json({user: data});
     
@@ -48,5 +55,6 @@ app.post('/test', async (req, res) => {
 }
 
 });
+
 
 app.listen(PORT, () => console.log('Your server is running on PORT ' + PORT));
