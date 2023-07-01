@@ -6,7 +6,7 @@ app.use(express.json());
 app.use(cors());
 
 //database variables
-const dbURI = "mongodb+srv://fire-kangaroo:Wlf5sEOec2hp6foM@recipes.5xnk3eo.mongodb.net/user-recipes?retryWrites=true&w=majority"
+const dbURI = ""
 const mongoose = require("mongoose");
 const Recipe = require("./models/recipe");
 
