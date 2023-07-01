@@ -5,6 +5,16 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+//database variables
+const dbURI = "mongodb+srv://fire-kangaroo:Wlf5sEOec2hp6foM@recipes.5xnk3eo.mongodb.net/user-recipes?retryWrites=true&w=majority"
+const mongoose = require("mongoose");
+const Recipe = require("./models/recipe");
+
+//connect to db
+mongoose.connect(dbURI, {UseNewUrlParser: true, useUnifiedTopology: true})
+.then((result) => app.listen(PORT, () => console.log('Your server is running on PORT ' + PORT)))  //once connected to db, start listening to port
+.catch((error) => console.log(error));
+
 const API_KEY = '+uPfKo8TXPtfhUppp3+/Fg==wUIsZ70JZH1CiaBN';
 var query = 'italian wedding soup';
 app.post('/requests', async (req, res) => { 
@@ -48,13 +58,43 @@ app.post('/test', async (req, res) => {
   try {
     const response = await fetch(`https://api.api-ninjas.com/v1/recipe?query=${input}`, options);
     const data = await response.json(); 
-    res.json({user: data});
+    
+    //db query
+    //return anything that says {input} in title or ingredients
+    let dbQuery = {
+      title: new RegExp(input, 'i'),
+      ingredients: new RegExp(input, 'i')
+    }
+    
+    //call to database
+    
+    let dbData = await Recipe.find(dbQuery)
+    .catch((err) => console.log(err));
+    //concatenate dbData along with API data
+    const allData = data.concat(dbData);
+
+    //send data to user
+    res.json({user: allData});
     
 } catch (error) {
     console.error(error);
 }
+});
 
+//Add recipe to database
+app.post("/add-recipe", async(req, res) =>{
+  const recipe = new Recipe({
+    title: req.body.title,
+    ingredients: req.body.ingredients,
+    servings: req.body.servings,
+    instructions: req.body.instructions
+  });
+
+  recipe.save()
+  .then((result) =>{
+    res.json({res: result})
+  })
+  .catch((err) => console.log(err));
 });
 
 
-app.listen(PORT, () => console.log('Your server is running on PORT ' + PORT));
