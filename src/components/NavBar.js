@@ -1,49 +1,59 @@
-/*import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import React from 'react';
+import { Nav, Navbar, NavDropdown, Container } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 
-function BasicExample() {
+export const NavBar = () => {
+
+const handleSubmit = (event) => {
+  event.preventDefault();
+  let newName = event.target[0].value;
+  search(newName);
+}
+async function search(newName){
+  const options = {
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify({
+      food:newName,
+    }),
+  };
+
+  let response = await fetch("http://localhost:8000/test", options);
+  const recipes = await response.json();
+  console.log(recipes.user);
+}
+
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar bg="body-tertiary" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Brand href="#">Delicious Eats</Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbarSupportedContent" />
+        <Navbar.Collapse id="navbarSupportedContent">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+            <Nav.Link as={NavLink} exact to="/" activeclassname="active">Home</Nav.Link>
+            <Nav.Link as={NavLink} to="/AddRecipe" activeclassname="active">Add Recipe</Nav.Link>
+            <Nav.Link as={NavLink} to="/AboutUs" activeclassname="active">About Us</Nav.Link>
+            <NavDropdown title="Dropdown" id="navbarDropdown">
+              <NavDropdown.Item href="#">Contact Us</NavDropdown.Item>
+              <NavDropdown.Item href="#">Credits</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
+              <NavDropdown.Item href="#">Something else here</NavDropdown.Item>
             </NavDropdown>
+            <Nav.Link disabled>Disabled</Nav.Link>
+          </Nav>
+          <Nav className="ml-auto">
+            <form className="d-flex" onSubmit={handleSubmit}>
+              <input className="form-control me-2" type="text" id = "foodInput" placeholder="ex. Banana Nut Bread" aria-label="Search" />
+              <button className="btn btn-outline-success" type="submit">Search</button>
+            </form>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
-}
-export default BasicExample; */
+};
 
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import './NavBar.css';
-function NavBar() {
-    return (
-        <nav  id = "nbar" className="navbar">
-            <ul>
-                <li><NavLink to="./" end activeclassname="active">Home</NavLink></li>
-                <li><NavLink to="./AddRecipe" activeclassname="active">Add Recipe</NavLink></li>
-                <li><NavLink to="./AboutUs" activeclassname="active">About Us</NavLink></li>
-            </ul>
-        </nav>
-    );
-}
 export default NavBar;

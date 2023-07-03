@@ -1,5 +1,7 @@
+import StyledContainer from "./StyledContainer";
+
 export default function AboutUs() {
     return (
-        <div>About Us</div>
+        <StyledContainer>About Us</StyledContainer>
     );
     }

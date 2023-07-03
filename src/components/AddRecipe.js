@@ -1,3 +1,6 @@
+import StyledContainer from "./StyledContainer";
+
+
 export default function AddRecipe(){
-    return <div>Add Recipe</div>;
+    return <StyledContainer>Add Recipe</StyledContainer>;
     }
