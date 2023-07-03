@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import { Nav, Navbar, NavDropdown, Container } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 
@@ -57,3 +58,19 @@ async function search(newName){
 };
 
 export default NavBar;
+=======
+import { NavLink } from 'react-router-dom';
+import './NavBar.css';
+function NavBar() {
+    return (
+        <nav  id = "nbar" className="navbar">
+            <ul>
+                <li><NavLink to="./" end activeclassname="active">Home</NavLink></li>
+                <li><NavLink to="./AddRecipe" activeclassname="active">Add Recipe</NavLink></li>
+                <li><NavLink to="./AboutUs" activeclassname="active">About Us</NavLink></li>
+            </ul>
+        </nav>
+    );
+}
+export default NavBar;
+>>>>>>> 020b10db4c5b0618db0548efcc44acc3daaf82ab
