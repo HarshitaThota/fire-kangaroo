@@ -12,26 +12,26 @@ header {
     background-color: #24252A;
 }
 
-.logo {
-    width: 100px;
-    /* Adjust the width as needed */
-    height: auto;
-    /* Adjust the height as needed */
+h2 {
+    display: inline-block;
+    color: violet;
+    margin-left: 300px;
+    /* Adjust the margin value as needed */
 }
 
 .nav__links {
     list-style: none;
     display: flex;
+    align-items: center;
+    transform: translateX(-130px);
 }
 
 .nav__links li {
     margin-right: 20px;
-    /* Adjust the spacing between list items */
 }
 
 .nav__links li:last-child {
     margin-right: 0;
-    /* Remove margin from the last list item */
 }
 
 .nav__links li a {
@@ -39,6 +39,8 @@ header {
     text-decoration: none;
 }
 
-.nav__links li a:hover {
-    color: #ffffff;
+h2:hover {
+    color: violet;
+    text-decoration: none;
+    cursor: default;
 }
